@@ -2,8 +2,7 @@
 
 A modern web application that helps users track their bucket list dreams and goals. Users can create, manage, and visualize their bucket list items with images in a secure, personalized environment.
 
-![BucketList Tracker Screenshot](screenshot.png)
-_(Note: You'll need to add an actual screenshot of your application here)_
+![BucketList Tracker Screenshot](https://github.com/user-attachments/assets/6a05cd84-b365-4a79-b9e5-f41c9d919323)
 
 ## Features
 
