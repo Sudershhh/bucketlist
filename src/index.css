@@ -1,68 +1,400 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Modern color palette */
+  --primary-color: #6366f1;
+  --primary-hover: #4f46e5;
+  --background-color: #f8fafc;
+  --card-background: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  background-color: var(--background-color);
+  color: var(--text-primary);
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
 }
 
+/* Modern container styling */
+.App {
+  max-width: 1280px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+/* Heading styles */
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+  background: linear-gradient(
+    120deg,
+    var(--primary-color),
+    var(--primary-hover)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+h2 {
+  font-size: 1.875rem;
+  color: var(--text-primary);
+  margin: 2rem 0;
+  text-align: center;
+}
+
+/* Form styling */
+form {
+  background: var(--card-background);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  padding: 2rem;
+  margin: 2rem 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="file"],
+textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Button styling */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  transition: all 0.2s ease;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+button[type="submit"] {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Grid layout for bucket list items */
+.amplify-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+/* Box styling */
+.box {
+  background: var(--card-background);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Image styling */
+.box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+/* Text styling */
+.box h3 {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin: 0;
+  padding: 1rem;
+}
+
+.box p {
+  color: var(--text-secondary);
+  padding: 0 1rem;
+}
+
+/* Delete button styling */
+.box button[variation="destructive"] {
+  background: var(--danger-color);
+  color: white;
+  border: none;
+  width: calc(100% - 2rem);
+  margin: 1rem;
+}
+
+.box button[variation="destructive"]:hover {
+  background: #dc2626;
+}
+
+/* Sign out button styling */
+button[onClick="signOut"] {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  margin-top: 2rem;
+}
+
+button[onClick="signOut"]:hover {
+  background: var(--background-color);
+  border-color: var(--text-secondary);
+}
+
+/* Divider styling */
+.amplify-divider {
+  margin: 2rem 0;
+  border-color: var(--border-color);
+  opacity: 0.5;
+}
+
+/* File input styling */
+input[type="file"] {
+  background: var(--background-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .amplify-grid {
+    grid-template-columns: 1fr;
   }
-  a:hover {
-    color: #747bff;
+
+  .App {
+    padding: 0 1rem;
   }
-  button {
-    background-color: #f9f9f9;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Loading state animations */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.loading {
+  animation: shimmer 1s linear infinite;
+  background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+  background-size: 800px 104px;
+}
+
+/* Add these new styles to your existing CSS */
+
+.error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.create-form {
+  background: var(--card-background);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.form-input {
+  margin-bottom: 1.5rem;
+}
+
+.file-input-container {
+  margin: 1.5rem 0;
+}
+
+.file-input-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.loading-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.loading-box {
+  height: 300px;
+  background: var(--card-background);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.loading-content {
+  height: 100%;
+  animation: shimmer 1s linear infinite;
+  background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+  background-size: 800px 104px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+  background: var(--card-background);
+  border-radius: 1rem;
+  margin: 2rem 0;
+}
+
+.box-content {
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.description {
+  color: var(--text-secondary);
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.dream-image {
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.submit-button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.delete-button {
+  margin-top: 1rem;
+}
+
+.sign-out-button {
+  margin: 2rem auto;
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .create-form {
+    padding: 1.5rem;
+  }
+
+  .box-content {
+    padding: 1rem;
+  }
+
+  .dream-image {
+    height: 150px;
+  }
+}
+
+/* Add these new header styles and modify the existing ones */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  background: var(--card-background);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  padding: 1rem 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Update h1 styles */
+.header-content h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* Update sign-out button styles */
+.sign-out-button {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.sign-out-button:hover {
+  background: var(--background-color);
+  border-color: var(--text-secondary);
+}
+
+/* Update App container styles */
+.App {
+  margin: 0 auto;
+}
+
+/* Update the content padding */
+.create-form {
+  margin-top: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 0 1rem;
+  }
+
+  .header-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .sign-out-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
 }
